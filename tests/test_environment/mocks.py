@@ -1,14 +1,14 @@
 from datetime import datetime as dt
 from unittest.mock import Mock
 
-from repositories import EnvironmentRepository, S3Repository
+from repositories import S3Repository
 from services import StorageService
 
 
 def get_mocked_s3repo_returns_empty_body():
     s3r = S3Repository("test- bucket")
     s3r.get_body = Mock(name="get_body")
-    s3r.get_body.return_value = "{}"
+    s3r.get_body.return_value = ""
     s3r.get_metadata = Mock(name="get_metadata")
     s3r.get_metadata.return_value = ""
     s3r.has_key = Mock(name="has_key")
@@ -21,7 +21,7 @@ def get_mocked_s3repo_returns_empty_body():
 def get_mocked_s3repo_has_key_but_no_metadata():
     s3r = S3Repository("test-bucket")
     s3r.get_body = Mock(name="get_body")
-    s3r.get_body.return_value = "{}"
+    s3r.get_body.return_value = ""
     s3r.get_metadata = Mock(name="get_metadata")
     s3r.get_metadata.return_value = {}
     s3r.has_key = Mock(name="has_key")
@@ -53,11 +53,3 @@ def get_mocked_storage_service():
     ss.has_key = Mock(name="has_key")
     ss.has_key.result_value = True
     return ss
-
-
-def get_env_repo():
-    er = EnvironmentRepository()
-    er.get_parameter = Mock(name="get_parameter")
-    er.get_parameter.return_value = "test_value"
-    return er
-

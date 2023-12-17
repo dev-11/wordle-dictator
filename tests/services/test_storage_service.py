@@ -9,7 +9,7 @@ class StorageServiceTests(unittest.TestCase):
     def test_get_returns_empty_json_when_repo_returns_empty_data(self):
         ss = StorageService(mocks.get_mocked_s3repo_returns_empty_body())
         result = ss.get("test-key")
-        self.assertEqual({}, result)
+        self.assertEqual("", result)
 
     def test_get_expiry_date_returns_default_value_for_missing_key(self):
         ss = StorageService(mocks.get_mocked_s3repo_returns_empty_body())
