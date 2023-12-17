@@ -1,20 +1,20 @@
 import config
-import repositories.environment_repository as er
 import repositories.s3_repository as s3r
 
 from .storage_service import StorageService
-from .secret_manager_service import SecretManagerService
 from .wordle_dictator_service import WordleDictatorService
+from .random_service import RandomService
 
 
 class ServiceFactory:
-    def __init__(self):
-        """Service to create every service."""
+    @staticmethod
+    def create_storage_service():
         repo = s3r.S3Repository(config.data_bucket)
-        env_repo = er.EnvironmentRepository()
+        return StorageService(repo)
 
-        self._storage_service = StorageService(repo)
-        self._secret_manager = SecretManagerService(env_repo)
+    @staticmethod
+    def create_random_service():
+        return RandomService()
 
     def create_wordle_dictator_service(self):
-        return WordleDictatorService()
+        return WordleDictatorService(self.create_storage_service(), self.create_random_service())

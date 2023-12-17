@@ -23,7 +23,7 @@ class StorageService:
 
     def get(self, key):
         data = self._repo.get_body(key)
-        return json.loads(data)
+        return data
 
     def save_or_update(self, key, data, cache_update_date):
-        return self._repo.save_or_update_file(key, json.dumps(data), cache_update_date)
+        return self._repo.save_or_update_file(key, data, cache_update_date)
