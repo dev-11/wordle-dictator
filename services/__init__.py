@@ -2,3 +2,4 @@
 from .secret_manager_service import SecretManagerService
 from .storage_service import StorageService
 from .service_factory import ServiceFactory
+from .wordle_dictator_service import WordleDictatorService

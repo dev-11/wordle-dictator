@@ -4,6 +4,7 @@ import repositories.s3_repository as s3r
 
 from .storage_service import StorageService
 from .secret_manager_service import SecretManagerService
+from .wordle_dictator_service import WordleDictatorService
 
 
 class ServiceFactory:
@@ -16,4 +17,4 @@ class ServiceFactory:
         self._secret_manager = SecretManagerService(env_repo)
 
     def create_wordle_dictator_service(self):
-        return
+        return WordleDictatorService()
