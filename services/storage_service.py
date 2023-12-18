@@ -1,5 +1,3 @@
-from datetime import datetime as dt
-
 from repositories import S3Repository
 
 

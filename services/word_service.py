@@ -1,4 +1,3 @@
-from datetime import datetime as dt
 import config as c
 
 
