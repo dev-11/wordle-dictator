@@ -13,7 +13,7 @@ class S3Repository:
         body = obj.get()["Body"].read()
         return body
 
-    def has_key(self, key):
+    def has(self, key):
         try:
             self._s3.Bucket(self._bucket).Object(key).last_modified
         except ClientError:
