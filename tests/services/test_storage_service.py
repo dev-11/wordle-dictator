@@ -13,5 +13,5 @@ class StorageServiceTests(unittest.TestCase):
 
     def test_save_or_update_returns_False_if_repo_cant_save_data(self):
         ss = StorageService(mocks.get_mocked_s3repo_returns_empty_body())
-        result = ss.save_or_update("", "", "")
+        result = ss.save_or_update("", "")
         self.assertFalse(result)

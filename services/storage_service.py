@@ -15,5 +15,5 @@ class StorageService:
         data = self._repo.get_body(key).splitlines()
         return data
 
-    def save_or_update(self, key, data, cache_update_date):
-        return self._repo.save_or_update_file(key, data, cache_update_date)
+    def save_or_update(self, key, data):
+        return self._repo.save_or_update_file(key, data)
